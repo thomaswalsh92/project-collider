@@ -7,12 +7,16 @@ import { Canvas, ThreeEvent, useFrame } from "@react-three/fiber";
 
 //COMPONENTS
 import AppInner from "./components/AppInner";
+import { TestComponent } from "./components/TestComponent";
 
 export default function App() {
   return (
-    <Canvas>
-      <color attach="background" args={["#0A0908"]} />
-      <AppInner />
-    </Canvas>
+    <>
+      <TestComponent />
+      <Canvas>
+        <color attach="background" args={["#0A0908"]} />
+        <AppInner />
+      </Canvas>
+    </>
   );
 }
