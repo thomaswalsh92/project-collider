@@ -101,22 +101,22 @@ udpPort.on("message", ({ address, args }) => {
   }
 
   //@@@ TRACK MESSAGES @@@//
-  //BPM - Regular BPM updates via OSC
-  if (address === "/BPM") {
-    // console.log("BPM");
+  //16th notes elapsed
+  if (address === "/16th") {
+    // console.log("16th", args[0]);
     io.emit("BPM: ", { value: args[0] });
   }
 
-  //Playing - Live set playing
-  if (address === "/playing") {
-    // console.log("Playing");
+  //Bars elapsed
+  if (address === "/bar") {
+    // console.log("bar", args[0]);
     io.emit("playing: ", { value: args[0] });
   }
 
-  //Progress
-  if (address === "/progress") {
-    //console.log("/progress")
-    io.emit("progress: ", { value: args[0] });
+  //BPM
+  if (address === "/bpm") {
+    // console.log("/bpm", args[0]);
+    io.emit("playing: ", { value: args[0] });
   }
 });
 

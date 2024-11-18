@@ -17,8 +17,6 @@ export type UseOSC = (
 const socket = io.connect("http://localhost:3001");
 socket.connect();
 
-//this function needs to allow socket.on's to be attached to any components that call it
-//to-do eventually be good for this hook to be able to take an array of events
 export const useOSC: UseOSC = (subscribeTo, onMessage) => {
   if (Array.isArray(subscribeTo)) {
     for (let i = 0; i < subscribeTo.length; i++) {
