@@ -56,29 +56,67 @@ udpPort.on("ready", () => {
 });
 
 udpPort.on("message", ({ address, args }) => {
-  //###TRIGGERS
-  //filter kick triggers
-  if (address === "/kick" && args[0] !== 0) {
-    io.emit("kick-start", { velocity: args[0] });
+  //@@@ NOTE MESSAGES @@@//
+  //“Thump” - Kick / Central rhythmic anchor
+  if (address === "/note1" && args[0] !== 0) {
+    // console.log("note1");
+    io.emit("note1", { velocity: args[0] });
   }
 
-  if (address === "/kick" && args[0] === 0) {
-    io.emit("kick-end", { velocity: args[0] });
+  //“Crack” - Snare / Clap / Backbeat element
+  if (address === "/note2" && args[0] !== 0) {
+    // console.log("note2");
+    io.emit("note2", { velocity: args[0] });
   }
 
-  //filter bass triggers
-  if (address === "/bass" && args[0] !== 0) {
-    io.emit("bass-start", { velocity: args[0] });
+  //“Tick” - Hat / Shaker / Percussion
+  if (address === "/note3" && args[0] !== 0) {
+    // console.log("note3");
+    io.emit("note3", { velocity: args[0] });
   }
 
-  if (address === "/bass" && args[0] === 0) {
-    io.emit("bass-end", { velocity: args[0] });
+  //“Womp” - Bass
+  if (address === "/note4" && args[0] !== 0) {
+    // console.log("note4");
+    io.emit("note4", { velocity: args[0] });
   }
 
-  //###CONTOURS
-  //filter hat contour
-  if (address === "/hat-contour") {
-    io.emit("hat-contour", { value: args[0] });
+  //@@@ CONTOUR MESSAGES @@@//
+  //“Swell” - A pad or reverbed element with some dynamism
+  if (address === "/contour1") {
+    // console.log("contour1: ", args[0]);
+    io.emit("contour1", { value: args[0] });
+  }
+
+  //“Jitter” - A chaotic percussive or synth element
+  if (address === "/contour2") {
+    // console.log("contour2: ", args[0]);
+    io.emit("contour2", { value: args[0] });
+  }
+
+  //“Loud” - Overall track contour
+  if (address === "/contour3") {
+    // console.log("contour3: ", args[0]);
+    io.emit("contour3", { value: args[0] });
+  }
+
+  //@@@ TRACK MESSAGES @@@//
+  //BPM - Regular BPM updates via OSC
+  if (address === "/BPM") {
+    // console.log("OSC");
+    io.emit("BPM: ", { value: args[0] });
+  }
+
+  //Playing - Live set playing
+  if (address === "/playing") {
+    // console.log("OSC");
+    io.emit("playing: ", { value: args[0] });
+  }
+
+  //Progress
+  if (address === "/progress") {
+    //console.log("/progress")
+    io.emit("progress: ", { value: args[0] });
   }
 });
 

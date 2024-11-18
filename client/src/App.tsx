@@ -8,8 +8,6 @@ import { Canvas, ThreeEvent, useFrame } from "@react-three/fiber";
 //COMPONENTS
 import AppInner from "./components/AppInner";
 
-//listen to websocket messages for audio-reactive event
-
 export default function App() {
   return (
     <Canvas>

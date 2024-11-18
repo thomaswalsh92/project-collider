@@ -2,7 +2,6 @@
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import * as io from "socket.io-client";
-import { Models } from "./Models";
 import { AmbientLight, Color, PointLight } from "three";
 import { OrbitControls } from "@react-three/drei";
 
@@ -56,7 +55,6 @@ export const AppInner = () => {
   return (
     <>
       <OrbitControls />
-      <Models />
       <pointLight ref={pointLightRed} position={[0, 5, 0]} color="#EF6F6C" />
       {/* <pointLight ref={pointLightBlue} position={[0, 20, 0]} color="blue" /> */}
       <pointLight ref={pointLightBlue} position={[0, -5, 0]} color="#59C9A5" />
