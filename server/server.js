@@ -103,13 +103,13 @@ udpPort.on("message", ({ address, args }) => {
   //@@@ TRACK MESSAGES @@@//
   //BPM - Regular BPM updates via OSC
   if (address === "/BPM") {
-    // console.log("OSC");
+    // console.log("BPM");
     io.emit("BPM: ", { value: args[0] });
   }
 
   //Playing - Live set playing
   if (address === "/playing") {
-    // console.log("OSC");
+    // console.log("Playing");
     io.emit("playing: ", { value: args[0] });
   }
 
