@@ -1,6 +1,6 @@
 import * as io from "socket.io-client";
 
-type OSCMessage =
+export type OSCAddress =
   | "note1"
   | "note2"
   | "note3"
@@ -9,17 +9,23 @@ type OSCMessage =
   | "contour2"
   | "contour3";
 
-type UseOSC = (subscribeTo: OSCMessage, callback: () => void) => () => void;
+export type UseOSC = (
+  subscribeTo: OSCAddress | OSCAddress[],
+  onMessage: () => void
+) => void;
 
 const socket = io.connect("http://localhost:3001");
 socket.connect();
 
 //this function needs to allow socket.on's to be attached to any components that call it
 //to-do eventually be good for this hook to be able to take an array of events
-export const useOSC: UseOSC = (subscribeTo, callback) => {
-  return () => {
-    socket.on(subscribeTo, () => {
-      callback();
-    });
-  };
+export const useOSC: UseOSC = (subscribeTo, onMessage) => {
+  if (Array.isArray(subscribeTo)) {
+    for (let i = 0; i < subscribeTo.length; i++) {
+      socket.on(subscribeTo[i], () => onMessage());
+    }
+    return;
+  }
+
+  socket.on(subscribeTo, () => onMessage());
 };

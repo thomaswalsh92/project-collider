@@ -5,17 +5,15 @@ import * as React from "react";
 import { useRef, useState, useEffect } from "react";
 import { Canvas, ThreeEvent, useFrame } from "@react-three/fiber";
 
-//COMPONENTS
-import AppInner from "./components/AppInner";
-import { TestComponent } from "./components/TestComponent";
+//LAYER COMPONENTS
+import { Layer3D } from "./components/Layer3D";
 
 export default function App() {
   return (
     <>
-      <TestComponent />
       <Canvas>
         <color attach="background" args={["#0A0908"]} />
-        <AppInner />
+        <Layer3D />
       </Canvas>
     </>
   );
