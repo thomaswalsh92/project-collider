@@ -101,7 +101,7 @@ udpPort.on("message", ({ address, args }) => {
   }
 
   //@@@ TRACK MESSAGES @@@//
-  //16th notes elapsed
+  // 16th notes elapsed
   if (address === "/16th") {
     // console.log("16th", args[0]);
     io.emit("BPM: ", { value: args[0] });
@@ -115,7 +115,7 @@ udpPort.on("message", ({ address, args }) => {
 
   //BPM
   if (address === "/bpm") {
-    // console.log("/bpm", args[0]);
+    // console.log("bpm", args[0]);
     io.emit("playing: ", { value: args[0] });
   }
 });
